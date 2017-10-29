@@ -1,1 +1,4 @@
-p = link_to administrator.email, edit_admin_administrator_path(administrator)
+p
+  => link_to administrator.email, edit_admin_administrator_path(administrator)
+  - if !administrator.invitation_accepted?
+    span.secondary.label invité

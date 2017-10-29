@@ -10,8 +10,11 @@ module Admin
 
     def create
       @administrator = Administrator.new(administrator_params)
-      if @administrator.save
-        redirect_to admin_administrators_path, notice: "L'administrateur a été ajouté."
+      if @administrator.invite!
+        redirect_to(
+          admin_administrators_path,
+          notice: "L'administrateur a été ajouté."
+        )
       else
         render :new
       end
@@ -24,7 +27,10 @@ module Admin
     def update
       @administrator = Administrator.find(params[:id])
       if @administrator.update_attributes(administrator_params)
-        redirect_to admin_administrators_path, notice: "L'administrateur a été mis à jour."
+        redirect_to(
+          admin_administrators_path,
+          notice: "L'administrateur a été mis à jour."
+        )
       else
         render :edit
       end
@@ -33,9 +39,15 @@ module Admin
     def destroy
       @administrator = Administrator.find(params[:id])
       if @administrator.destroy
-        redirect_to admin_administrators_path, notice: "L'administrateur a été supprimé."
+        redirect_to(
+          admin_administrators_path,
+          notice: "L'administrateur a été supprimé."
+        )
       else
-        redirect_to admin_administrators_path, alert: "L'administrateur n'a pas été supprimé."
+        redirect_to(
+          admin_administrators_path,
+          alert: "L'administrateur n'a pas été supprimé."
+        )
       end
     end
 
