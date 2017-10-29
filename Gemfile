@@ -35,10 +35,14 @@ gem 'turbolinks',                       '~> 5'
 gem 'jbuilder',                         '~> 2.5'
 
 # Additional gems
+gem 'awesome_print'
+gem 'country_select'
 gem 'devise',                           '~> 4.3.0'
 gem 'devise_invitable',                 '~> 1.7.0'
+gem 'gettext_i18n_rails',               '~> 1.8.0'
 gem 'simple_form',                      '~> 3.5.0'
 gem 'slim',                             '~> 3.0.0'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger
@@ -48,14 +52,19 @@ group :development, :test do
 end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %>
-  # anywhere in the code
-  gem 'web-console',                    '>= 3.3.0'
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'listen',                         '~> 3.0.5'
   # Spring speeds up development by keeping your application running in the
   # background
   gem 'spring'
   gem 'spring-watcher-listen',          '~> 2.0.0'
+  # gettext and ruby_parser required for FastGettext
+  gem 'gettext', '>=3.0.2', require: false
+  gem 'ruby_parser', require: false
+  # Access an IRB console on exception pages or by using <%= console %>
+  # anywhere in the code
+  gem 'web-console',                    '>= 3.3.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
