@@ -1,0 +1,33 @@
+doctype html
+html(lang="fr")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title = yield :head_title
+    = stylesheet_link_tag 'admin', media: 'all'
+    = javascript_include_tag 'admin'
+    = csrf_meta_tags
+    = yield :head
+  body
+    .top-bar
+      .top-bar-left
+        ul.dropdown.menu(data-dropdown-menu)
+          li.menu-text TransitionApp
+      .top-bar-right
+        ul.menu
+          li
+            = link_to 'Me déconnecter', \
+                      destroy_administrator_session_path, \
+                      method: :delete
+
+    #admin
+      .container
+        .row
+          .small-12.medium-3.columns
+            #sidebar
+              = yield :sidebar
+          .small-12.medium-9.columns
+            #content
+              = render 'layouts/admin/shared/messages'
+
+              = yield

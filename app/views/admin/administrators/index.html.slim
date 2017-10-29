@@ -1,0 +1,7 @@
+- content_for :sidebar do
+  = render 'sidebar'
+
+- if @administrators.any?
+  = render @administrators
+- else
+  = no_data("Aucun administrateur enregistré.")

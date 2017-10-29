@@ -1,0 +1,7 @@
+- content_for :sidebar do
+  = render 'sidebar'
+
+= simple_form_for @administrator, url: admin_administrators_path do |f|
+  = render 'form', f: f
+
+  = f.button :submit, 'Enregistrer', class: 'success button'
