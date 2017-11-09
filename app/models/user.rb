@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: administrators
+# Table name: users
 #
 #  id                     :integer          not null, primary key
 #  email                  :string           default(""), not null
@@ -15,22 +15,16 @@
 #  last_sign_in_ip        :inet
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  invitation_token       :string
-#  invitation_created_at  :datetime
-#  invitation_sent_at     :datetime
-#  invitation_accepted_at :datetime
-#  invitation_limit       :integer
-#  invited_by_type        :string
-#  invited_by_id          :integer
-#  invitations_count      :integer          default(0)
+#  hub_id                 :integer
 #
 
-class Administrator < ApplicationRecord
+class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :invitable, :database_authenticatable, :recoverable,
-         :rememberable, :trackable, :validatable
+  # :registerable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :recoverable, :rememberable,
+         :trackable, :validatable, :confirmable
+
+  belongs_to :hub
 
   validates :email, presence: true
-
 end

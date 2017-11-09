@@ -1,0 +1,14 @@
+- if flash.any?
+  #messages
+    - flash.each do |name, msg|
+      - if msg.class == Array
+        - msg.compact.each do |message|
+          div(class="#{name.to_s == "notice" ? "success" : "alert"} callout" data-closable)
+            / button.close-button(aria-label="Dismiss alert" type="button" data-close)
+            /   span(aria-hidden="true") &times;
+            = content_tag :div, message, id: "flash_#{name}"
+      - elsif !msg.nil?
+          div(class="#{name.to_s == "notice" ? "success" : "alert"} callout" data-closable)
+            / button.close-button(aria-label="Dismiss alert" type="button" data-close)
+            /   span(aria-hidden="true") &times;
+            = content_tag :div, msg, id: "flash_#{name}"

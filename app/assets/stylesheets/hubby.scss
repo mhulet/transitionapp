@@ -2,7 +2,7 @@
  *= require ladda/dist/ladda-themeless.min
  */
 
-@import "foundation/admin-settings";
+@import "foundation/hubby-settings";
 @import "foundation-sites/scss/foundation";
 @import "font-awesome/css/font-awesome";
 
@@ -45,33 +45,64 @@
 @include foundation-visibility-classes;
 @include foundation-float-classes;
 
-body {
-  .top-bar {
-    color: #FFF;
+#header {
+  padding: $global-padding 0;
 
-    a {
-      color: rgba(255, 255, 255, .75);
+  #logo {
+    font-weight: 300;
+    color: $green;
+  }
+}
 
-      &:hover {
-        color: #FFF;
+#main {
+  #content {
+    padding: $global-padding;
+    background-color: $white;
+
+    #content-header {
+      margin-top: -$global-padding;
+      margin-right: -$global-padding;
+      margin-bottom: $global-margin;
+      margin-left: -$global-padding;
+      padding: $global-padding;
+      background: darken($green, 10%);
+      color: $white;
+
+      h1 {
+        color: $white;
+      }
+
+      .menu {
+        a {
+          color: lighten($green, 15%);
+
+          .as-badge {
+            color: $white;
+          }
+        }
       }
     }
   }
 
-  #admin {
-    margin-top: 2rem;
+  #footer {
+    padding: $global-padding 0;
+    color: $medium-gray;
+    font-size: .85rem;
   }
+}
 
-  #sidebar {
-    padding: 2rem 0;
-  }
+// Helpers
 
-  #content {
-    padding: 2rem;
-    background: #FFF;
+.bigger {
+  font-weight: 300;
+  font-size: 2rem;
+  color: darken($green, 10%);
+}
 
-    table {
-      table-layout: fixed;
-    }
-  }
+.no-margin-bottom {
+  margin-bottom: 0;
+}
+
+.text-muted {
+  color: $dark-gray;
 }

@@ -1,0 +1,7 @@
+<p>Bienvenue <%= @email %>!</p>
+
+<p>Pourriez-vous confirmer que votre adresse email est bien correcte en cliquant sur le lien suivant? Merci d'avance!</p>
+
+<p><%= link_to "Confirmer l'exactitude de mon adresse email", confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<p>À tout de suite!</p>
