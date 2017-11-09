@@ -3,9 +3,6 @@ SimpleForm.setup do |config|
   # Don't forget to edit this file to adapt it to your needs (specially
   # all the grid-related classes)
   #
-  # Please note that hints are commented out by default since Foundation
-  # does't provide styles for hints. You will need to provide your own CSS styles for hints.
-  # Uncomment them to enable hints.
 
   config.wrappers :vertical_form, class: :input, hint_class: :field_with_hint, error_class: :error do |b|
     b.use :html5
@@ -14,10 +11,25 @@ SimpleForm.setup do |config|
     b.optional :pattern
     b.optional :min_max
     b.optional :readonly
-    b.use :label_input
+
+    b.wrapper tag: 'label' do |ba|
+      ba.use :label_text
+      ba.use :input
+    end
+
+    # b.use :label_input
     b.use :error, wrap_with: { tag: :small, class: "form-error is-visible" }
 
     b.use :hint,  wrap_with: { tag: :p, class: "help-text" }
+  end
+
+  config.wrappers :checkbox, class: :input, hint_class: :field_with_hint, error_class: :error do |b|
+    b.use :html5
+    b.optional :pattern
+    b.optional :readonly
+    b.use :label_input
+    b.use :error, wrap_with: { tag: :small, class: 'form-error is-visible' }
+    b.use :hint, wrap_with: { tag: :p, class: 'help-text' }
   end
 
   config.wrappers :horizontal_form, tag: 'div', class: 'row', hint_class: :field_with_hint, error_class: :error do |b|
@@ -89,14 +101,6 @@ SimpleForm.setup do |config|
 
     b.use :error, wrap_with: { tag: :small, class: "form-error is-visible" }
     b.use :hint,  wrap_with: { tag: :p, class: "help-text" }
-  end
-
-  config.wrappers :zurb_input, class: "input-group", error_class: :field_with_errors do |b|
-    b.use :html5
-    b.use :placeholder
-
-    b.use :label, class: "input-group-label"
-    b.use :input, class: "input-group-field"
   end
 
   # CSS class for buttons

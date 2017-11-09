@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :administrators
+    resources :hubs
     root to: 'administrators#index'
   end
 end

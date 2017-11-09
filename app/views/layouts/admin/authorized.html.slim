@@ -13,6 +13,10 @@ html(lang="fr")
       .top-bar-left
         ul.dropdown.menu(data-dropdown-menu)
           li.menu-text TransitionApp
+          li(class="#{controller_name == 'hubs' ? 'active' : nil}")
+            = link_to 'Initiatives', admin_hubs_path
+          li(class="#{controller_name == 'administrators' ? 'active' : nil}")
+            = link_to 'Administrateurs', admin_administrators_path
       .top-bar-right
         ul.menu
           li

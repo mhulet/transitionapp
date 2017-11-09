@@ -1,0 +1,7 @@
+- content_for :sidebar do
+  = render 'sidebar'
+
+- if @hubs.any?
+  = render @hubs
+- else
+  = no_data("Aucune initiative enregistrée.")
