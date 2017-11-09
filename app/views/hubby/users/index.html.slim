@@ -1,0 +1,7 @@
+- content_for :title, 'Membres'
+- content_for :actions, render('actions')
+
+- if @users.any?
+  = render @users
+- else
+  = no_data("Aucun membre enregistré.")
