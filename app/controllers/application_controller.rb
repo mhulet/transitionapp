@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   layout :layout_by_resource
 
+  before_action :set_locale
+
   protected
 
   def layout_by_resource
@@ -13,5 +15,9 @@ class ApplicationController < ActionController::Base
     else
       'application'
     end
+  end
+
+  def set_locale
+    I18n.locale = I18n.default_locale
   end
 end
